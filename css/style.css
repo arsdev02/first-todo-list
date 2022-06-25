@@ -1,0 +1,194 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+button {
+    cursor: pointer;
+}
+
+.todo {
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*                              form                        */
+.form__tittle span:nth-child(1) {
+    color: #0071f0;
+}
+.form__tittle span:nth-child(2) {
+    color: lightgreen;
+}
+
+.form {
+    width: 300px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px #ccc;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+}
+
+.form__input,
+.form__button {
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+
+.form__tittle {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: normal;
+}
+
+.form__item{
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.form__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    color: #9e9e9e;
+    transition: .3s;
+}
+
+.form__input {
+    width: 100%;
+    padding-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    background-color: transparent;
+    outline: none;
+    transition: .3s;
+}
+.form__input:focus {
+    border-bottom: 1px solid #1a73a8;
+}
+
+.form__button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #0071f0;
+    outline: none;
+    transition: .3s;
+}
+.form__button:hover {
+    background-color: rgba(0, 113, 240, .7);
+}
+
+
+.form__input:focus ~ .form__label,
+.form__input:valid ~ .form__label {
+    top: -18px;
+    font-size: 12px;
+    color: #e0e0e0;
+}
+/*                              form                        */
+
+/*                                  output                           */
+.output {
+    width: 100%;
+}
+
+.block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding: 10px;
+    box-shadow: 0 10px 15px #909090;
+    border-radius: 10px;
+    transition: .5s;
+}
+
+/* .changeBg {
+    background: green;
+} */
+
+.btnBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    row-gap: 5px;
+}
+
+.btnBlock button {
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    background-position: center;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-radius: 5px;
+    /* margin-bottom: 5px; */
+}
+.btnBlock p {
+    height: 30px;
+    line-height: 30px;
+    font-size: 17px;
+}
+
+.deletBtn {
+    background-image: url(../images/delete2.png);
+}
+.deletBtn:hover {
+    background-color: #ff3d3d;
+}
+
+.doneBtn {
+    background-image: url(../images/mark.png);
+}
+.doneBtn:hover {
+    background-color: lightgreen;
+}
+
+.editBtn {
+    background-image: url(../images/edit2.png);
+}
+.editBtn:hover,
+.editBtn:active {
+    background-color: #0071f0;
+}
+
+.textBlock {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.textBlock h3 {
+    position: relative;
+    font-size: 22px;
+}
+
+.textBlock h3::after {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: #909090;
+}
+
+.textBlock p:nth-child(2) {
+    font-size: 18px;
+}
+
+.textBlock p:nth-child(3) {
+    color: #454343;
+}
+/*                                  output                           */
