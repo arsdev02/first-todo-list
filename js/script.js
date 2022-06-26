@@ -1,6 +1,7 @@
 const form = document.querySelector('#form')
 let todos = []
-
+let idEdit = []
+const backdrop = document.querySelector('.backdrop')
 
 const creatTask = () =>{
     let message = document.querySelector('#message')
@@ -56,23 +57,25 @@ const renderTodos = () => {
             complete.textContent = 'todo is complete'
 
             let description = document.createElement('p')
-            description.textContent = `description: ${el.text}`
+            description.innerHTML = el.status?`description: <s>${el.text}</s>`:`description: ${el.text}`
             let textBlock = document.createElement('div')
             textBlock.className = 'textBlock'
 // events
             let deleteBtn = document.createElement('button')
-            // deleteBtn.textContent = 'DELET'
             deleteBtn.className = 'deletBtn'
             let doneBtn = document.createElement('button')
-            // doneBtn.textContent = 'DONE'
             doneBtn.className = 'doneBtn'
             let editBtn = document.createElement('button')
-            // editBtn.textContent = 'EDIT'
             editBtn.className = 'editBtn'
 
             editBtn.addEventListener('click', ()=>{
                 if(el.status===false){
-                    editTodo(el.id)
+                    if (idEdit.length === 1) {
+                        idEdit.splice(-1)
+                    }
+                    idEdit.push(el.id)
+                    backdrop.classList.toggle('backdropActiv')
+                    
                 }else{
                     alert('you cant edit todo')
                 }
@@ -88,13 +91,9 @@ const renderTodos = () => {
                 
 
             doneBtn.addEventListener('click', ()=>{
-                // doneTodo(el.id)
                 changeStatus(el.id)
             })
             
-            // if(el.status === true){
-            //     block.classList.add('changeBg')    
-            // }
 // appends 
         btnBlock.append(deleteBtn, editBtn, doneBtn)
             if(el.status){
@@ -112,11 +111,6 @@ const deleteTodo = (id) =>{
     renderTodos()
 }
 
-// const doneTodo = (id) => {
-//     todos[todos.findIndex(el=>el.id===id)].status=true
-//     renderTodos()
-// }
-
 const changeStatus = (id) =>{
     todos.forEach(el => {
         if(id===el.id){
@@ -126,27 +120,62 @@ const changeStatus = (id) =>{
     renderTodos()
 }
 
-const editTodo = (id) =>{
-    todos.forEach(el => {
-        if(id===el.id){
-            let newMess = prompt('edit name')
-            let newText = prompt('edit description')
-            if(newMess.trim() && newText.trim()){
-                el.message = newMess
-                el.text  = newText
-            }else if (newMess.trim()){
-                el.message = newMess
+let newName = document.querySelector('#newName')
+let newDescription = document.querySelector('#newDescription')
+
+let modalButton = document.querySelector('#ModalButton')
+modalButton.addEventListener('click', ()=>{
+    editTodo()
+    backdrop.classList.toggle('backdropActiv')
+ 
+})
+
+
+const editTodo = () =>{
+    let newName = document.querySelector('#newName')
+    let newDescription = document.querySelector('#newDescription')
+        todos.forEach(el => {
+            if(idEdit[0]===el.id){
+                    el.message = newName.value
+                    el.text  = newDescription.value
             }
-            else if (newText.trim()){
-                el.text  = newText
-            }
-            else{
-                alert(`you haven't made any changes`)
-            }
-        }
-    })
-    renderTodos()
+        })
+renderTodos()
+newName.value = ''
+newDescription.value = ''
 }
+
+
+
+
+
+// const editTodo = (id) =>{
+//         todos.forEach(el => {
+//             if(id===el.id){
+//                 promptName = prompt('name')
+//                 promptText = prompt('text')
+//                 if(promptName.trim() && promptText.trim()){
+//                     el.message = promptName
+//                     el.text  = promptText 
+//                 }else if (promptName.trim()){
+//                     el.message = promptName
+//                 }
+//                 else if (promptText .trim()){
+//                     el.text  = promptText 
+//                 }
+//                 else{
+//                     alert(`you haven't made any changes`)
+//                 }
+//             }
+//         })
+// renderTodos()
+// console.log(id)
+// console.log(todos[1].id)
+// }
+
+// const editTodo = (id) =>{
+// }
+
 
 
 // console.log(todos)

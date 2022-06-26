@@ -10,15 +10,15 @@
 <body>
     <section class="todo">
         <form class="form" id="form">
-            <h1 class="form__tittle"><span>To</span><span>Do</span> List</h1>
+            <h2 class="form__tittle"><span>To</span><span>Do</span> List</h2>
 
             <div class="form__item">
-                <input class="form__input" type="text" id="message" required="" autocomplete="off">
+                <input class="form__input" type="text" id="message" required autocomplete="off">
                 <label class="form__label">name</label>
             </div>
 
             <div class="form__item">
-                <input class="form__input" type="text" id="text" required="" autocomplete="off">
+                <input class="form__input" type="text" id="text" required autocomplete="off">
                 <label class="form__label">description</label>
             </div>
 
@@ -26,7 +26,20 @@
         </form>
         <div class="output"></div> 
     </section>
-    
+    <section class="backdrop">
+        <div id="formModal" class="form backdrop__form">
+            <h2 class="form__tittle"><span>To</span><span>Do</span> Edit</h2>
+            <div class="form__item">
+                <input type="text" id="newName" class="backdrop__input" placeholder=" " autocomplete="off">
+                <label class="backdrop__label">new name</label>
+            </div>
+            <div class="form__item">
+                <input type="text" id="newDescription" class="backdrop__input" placeholder=" " autocomplete="off">
+                <label class="backdrop__label">new description</label>
+            </div>
+            <button id="ModalButton" class="form__button">edit todo</button>
+        </div>
+    </section>
 
     <script src="./js/script.js"></script>
 </body>
