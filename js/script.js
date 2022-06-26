@@ -136,8 +136,16 @@ const editTodo = () =>{
     let newDescription = document.querySelector('#newDescription')
         todos.forEach(el => {
             if(idEdit[0]===el.id){
+                if(newName.value.trim() && newDescription.value.trim()){
                     el.message = newName.value
                     el.text  = newDescription.value
+                } else if (newName.value.trim()){
+                    el.message = newName.value
+                } else if (newDescription.value.trim()){
+                    el.text = newDescription.value
+                } else{
+                    alert(`you haven't made any changes`)
+                }
             }
         })
 renderTodos()
